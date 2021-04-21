@@ -1,0 +1,358 @@
+[gd_scene load_steps=89 format=2]
+
+[ext_resource path="res://texture/player/health_bar/health_box3.png" type="Texture" id=1]
+[ext_resource path="res://script/player.gd" type="Script" id=2]
+[ext_resource path="res://texture/player/health_bar/health_box_test.png" type="Texture" id=3]
+[ext_resource path="res://texture/player/kanan_new/idle/kanan_idle_1.png" type="Texture" id=4]
+[ext_resource path="res://texture/player/kanan_new/idle/kanan_idle_5.png" type="Texture" id=5]
+[ext_resource path="res://texture/player/kanan_new/idle/kanan_idle_6.png" type="Texture" id=6]
+[ext_resource path="res://audio/gunshot2.ogg" type="AudioStream" id=7]
+[ext_resource path="res://audio/player_death.ogg" type="AudioStream" id=8]
+[ext_resource path="res://texture/player/kanan_new/idle/kanan_idle_3.png" type="Texture" id=9]
+[ext_resource path="res://texture/player/kanan_new/idle/kanan_idle_2.png" type="Texture" id=10]
+[ext_resource path="res://texture/player/kanan_new/idle/kanan_idle_4.png" type="Texture" id=11]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot1/kanan_shoot1_2.png" type="Texture" id=12]
+[ext_resource path="res://texture/control_fat/Left_G.PNG" type="Texture" id=13]
+[ext_resource path="res://texture/control_fat/Left_B.PNG" type="Texture" id=14]
+[ext_resource path="res://texture/player/kanan_new/idle/kanan_idle_7.png" type="Texture" id=15]
+[ext_resource path="res://texture/player/kanan_new/idle/kanan_idle_8.png" type="Texture" id=16]
+[ext_resource path="res://texture/control_fat/Right_G.PNG" type="Texture" id=17]
+[ext_resource path="res://texture/control_fat/Right_B.PNG" type="Texture" id=18]
+[ext_resource path="res://script/CL_GUI.gd" type="Script" id=19]
+[ext_resource path="res://texture/control_fat/Up_G.PNG" type="Texture" id=20]
+[ext_resource path="res://texture/control_fat/Up_B.PNG" type="Texture" id=21]
+[ext_resource path="res://texture/control_fat/Melee_B.PNG" type="Texture" id=22]
+[ext_resource path="res://texture/player/kanan_new/death/kanan_death2.png" type="Texture" id=23]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot3/kanan_shoot3_2.png" type="Texture" id=24]
+[ext_resource path="res://texture/player/kanan_new/fall/kanan_fall3.png" type="Texture" id=25]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot2/kanan_shoot2_3.png" type="Texture" id=26]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot4/kanan_shoot4_2.png" type="Texture" id=27]
+[ext_resource path="res://texture/player/kanan_new/death/kanan_death1.png" type="Texture" id=28]
+[ext_resource path="res://texture/player/kanan_new/hurt/hurt2/kanan_hurt2_2.png" type="Texture" id=29]
+[ext_resource path="res://texture/player/kanan_new/jump/kanan_jump1.png" type="Texture" id=30]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot1/kanan_shoot1_1.png" type="Texture" id=31]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot4/kanan_shoot4_3.png" type="Texture" id=32]
+[ext_resource path="res://texture/player/kanan_new/death/kanan_death5.png" type="Texture" id=33]
+[ext_resource path="res://texture/player/kanan_new/fall/kanan_fall2.png" type="Texture" id=34]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot1/kanan_shoot1_4.png" type="Texture" id=35]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot2/kanan_shoot2_2.png" type="Texture" id=36]
+[ext_resource path="res://texture/player/kanan_new/hurt/hurt2/kanan_hurt2_3.png" type="Texture" id=37]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot4/kanan_shoot4_4.png" type="Texture" id=38]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot3/kanan_shoot3_4.png" type="Texture" id=39]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot5/kanan_shoot5_2.png" type="Texture" id=40]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot6/kanan_shoot6_1.png" type="Texture" id=41]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot2/kanan_shoot2_1.png" type="Texture" id=42]
+[ext_resource path="res://texture/player/kanan_new/walk/weapon/kanan_walk_weapon2.png" type="Texture" id=43]
+[ext_resource path="res://texture/player/kanan_new/walk/weapon/kanan_walk_weapon3.png" type="Texture" id=44]
+[ext_resource path="res://texture/player/kanan_new/death/kanan_death4.png" type="Texture" id=45]
+[ext_resource path="res://texture/player/kanan_new/jump/kanan_jump2.png" type="Texture" id=46]
+[ext_resource path="res://texture/player/kanan_new/melee/melee1/kanan_melee1_1.png" type="Texture" id=47]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot6/kanan_shoot6_2.png" type="Texture" id=48]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot6/kanan_shoot6_3.png" type="Texture" id=49]
+[ext_resource path="res://texture/player/kanan_new/walk/kanan_walk1.png" type="Texture" id=50]
+[ext_resource path="res://texture/player/kanan_new/walk/weapon/kanan_walk_weapon4.png" type="Texture" id=51]
+[ext_resource path="res://texture/player/kanan_new/walk/kanan_walk2.png" type="Texture" id=52]
+[ext_resource path="res://texture/player/kanan_new/walk/kanan_walk3.png" type="Texture" id=53]
+[ext_resource path="res://texture/player/kanan_new/walk/kanan_walk4.png" type="Texture" id=54]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot1/kanan_shoot1_3.png" type="Texture" id=55]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot5/kanan_shoot5_1.png" type="Texture" id=56]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot2/kanan_shoot2_4.png" type="Texture" id=57]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot5/kanan_shoot5_4.png" type="Texture" id=58]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot6/kanan_shoot6_4.png" type="Texture" id=59]
+[ext_resource path="res://texture/player/kanan_new/jump/kanan_jump3.png" type="Texture" id=60]
+[ext_resource path="res://texture/player/kanan_new/hurt/hurt2/kanan_hurt2_4.png" type="Texture" id=61]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot3/kanan_shoot3_3.png" type="Texture" id=62]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot5/kanan_shoot5_3.png" type="Texture" id=63]
+[ext_resource path="res://texture/player/kanan_new/walk/weapon/kanan_walk_weapon1.png" type="Texture" id=64]
+[ext_resource path="res://texture/player/kanan_new/death/kanan_death3.png" type="Texture" id=65]
+[ext_resource path="res://texture/player/health_bar/health_box1.png" type="Texture" id=66]
+[ext_resource path="res://texture/player/health_bar/health_box2.png" type="Texture" id=67]
+[ext_resource path="res://texture/control_fat/Melee_G.PNG" type="Texture" id=68]
+[ext_resource path="res://texture/player/kanan_new/fall/kanan_fall1.png" type="Texture" id=69]
+[ext_resource path="res://texture/player/kanan_new/jump/kanan_jump4.png" type="Texture" id=70]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot4/kanan_shoot4_1.png" type="Texture" id=71]
+[ext_resource path="res://texture/player/kanan_new/melee/melee1/kanan_melee1_2.png" type="Texture" id=72]
+[ext_resource path="res://texture/player/kanan_new/hurt/hurt2/kanan_hurt2_1.png" type="Texture" id=73]
+[ext_resource path="res://texture/player/kanan_new/fall/kanan_fall4.png" type="Texture" id=74]
+[ext_resource path="res://texture/player/kanan_new/melee/melee1/kanan_melee1_3.png" type="Texture" id=75]
+[ext_resource path="res://texture/player/kanan_new/melee/melee1/kanan_melee1_4.png" type="Texture" id=76]
+[ext_resource path="res://texture/player/kanan_new/shoot/shoot3/kanan_shoot3_1.png" type="Texture" id=77]
+[ext_resource path="res://texture/player/kanan_new/idle/crossbow/kanan_idle_crossbow6.png" type="Texture" id=78]
+[ext_resource path="res://texture/player/kanan_new/idle/crossbow/kanan_idle_crossbow5.png" type="Texture" id=79]
+[ext_resource path="res://texture/player/kanan_new/idle/crossbow/kanan_idle_crossbow2.png" type="Texture" id=80]
+[ext_resource path="res://texture/player/kanan_new/idle/crossbow/kanan_idle_crossbow7.png" type="Texture" id=81]
+[ext_resource path="res://texture/player/kanan_new/idle/crossbow/kanan_idle_crossbow8.png" type="Texture" id=82]
+[ext_resource path="res://texture/player/kanan_new/idle/crossbow/kanan_idle_crossbow3.png" type="Texture" id=83]
+[ext_resource path="res://texture/player/kanan_new/idle/crossbow/kanan_idle_crossbow1.png" type="Texture" id=84]
+[ext_resource path="res://texture/player/kanan_new/idle/crossbow/kanan_idle_crossbow4.png" type="Texture" id=85]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 84 ), ExtResource( 80 ), ExtResource( 83 ), ExtResource( 85 ), ExtResource( 79 ), ExtResource( 78 ), ExtResource( 81 ), ExtResource( 82 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 64 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 51 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 73 ), ExtResource( 29 ), ExtResource( 37 ), ExtResource( 61 ) ],
+"loop": false,
+"name": "hurt",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 69 ), ExtResource( 34 ), ExtResource( 25 ), ExtResource( 74 ) ],
+"loop": false,
+"name": "fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 23 ), ExtResource( 65 ), ExtResource( 45 ), ExtResource( 33 ) ],
+"loop": false,
+"name": "death",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 56 ), ExtResource( 40 ), ExtResource( 63 ), ExtResource( 58 ) ],
+"loop": true,
+"name": "shoot4",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 41 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 59 ) ],
+"loop": true,
+"name": "shoot5",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 47 ), ExtResource( 72 ), ExtResource( 75 ), ExtResource( 76 ) ],
+"loop": false,
+"name": "melee",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 30 ), ExtResource( 46 ), ExtResource( 60 ), ExtResource( 70 ) ],
+"loop": false,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 50 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ) ],
+"loop": true,
+"name": "walk-unarmed",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 31 ), ExtResource( 12 ), ExtResource( 55 ), ExtResource( 35 ) ],
+"loop": true,
+"name": "shoot0",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 42 ), ExtResource( 36 ), ExtResource( 26 ), ExtResource( 57 ) ],
+"loop": true,
+"name": "shoot1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 77 ), ExtResource( 24 ), ExtResource( 62 ), ExtResource( 39 ) ],
+"loop": true,
+"name": "shoot2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 71 ), ExtResource( 27 ), ExtResource( 32 ), ExtResource( 38 ) ],
+"loop": true,
+"name": "shoot3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "idle-unarmed",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 5.98176, 11.8519 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 5.73556, 0.651539 )
+
+[node name="player" type="KinematicBody2D"]
+position = Vector2( 70.6171, 107.093 )
+collision_layer = 2147483652
+collision_mask = 10
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "fall"
+frame = 3
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 2 )
+shape = SubResource( 3 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 16, 6 )
+
+[node name="Position2D_aim" type="Position2D" parent="."]
+position = Vector2( 0, 6 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+limit_left = 0
+limit_top = -100
+limit_right = 3575
+limit_bottom = 360
+smoothing_enabled = true
+smoothing_speed = 3.0
+editor_draw_limits = true
+
+[node name="RayCast_player" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 16 )
+collision_mask = 58
+
+[node name="RayCast_melee" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 25, 0 )
+collision_mask = 48
+
+[node name="HealthBar" type="Control" parent="."]
+margin_left = -14.2952
+margin_top = -31.7438
+margin_right = 25.7048
+margin_bottom = 8.25616
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar_under" type="TextureProgress" parent="HealthBar"]
+margin_right = 40.0
+margin_bottom = 40.0
+max_value = 10.0
+value = 10.0
+rounded = true
+texture_under = ExtResource( 66 )
+texture_progress = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="TextureProgress" parent="HealthBar"]
+margin_right = 40.0
+margin_bottom = 40.0
+max_value = 10.0
+value = 10.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 67 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpdateHealth" type="Tween" parent="HealthBar"]
+
+[node name="Area2D_feet" type="Area2D" parent="."]
+position = Vector2( 0, 32 )
+collision_layer = 4
+collision_mask = 48
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_feet"]
+position = Vector2( 0, -17.5 )
+shape = SubResource( 4 )
+
+[node name="shooting" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+volume_db = 18.0
+pitch_scale = 1.1
+attenuation = 0.138696
+
+[node name="audioDeath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = 9.088
+pitch_scale = 1.31
+
+[node name="CanvasLayer_GUI" type="CanvasLayer" parent="."]
+script = ExtResource( 19 )
+
+[node name="Control_HUD2" type="Control" parent="CanvasLayer_GUI"]
+margin_left = 8.91846
+margin_top = 11.3676
+margin_right = 48.9185
+margin_bottom = 51.3675
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ammo_label" type="RichTextLabel" parent="CanvasLayer_GUI/Control_HUD2"]
+margin_right = 60.0
+margin_bottom = 20.0
+text = "ammo:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ammo_count" type="RichTextLabel" parent="CanvasLayer_GUI/Control_HUD2"]
+margin_left = 50.0
+margin_right = 90.0
+margin_bottom = 20.0
+bbcode_text = "0"
+text = "0"
+
+[node name="disp_debug" type="RichTextLabel" parent="CanvasLayer_GUI/Control_HUD2"]
+margin_top = 16.0
+margin_right = 222.0
+margin_bottom = 78.0
+text = "debug"
+
+[node name="disp_debug2" type="RichTextLabel" parent="CanvasLayer_GUI/Control_HUD2"]
+margin_top = 32.0
+margin_right = 222.0
+margin_bottom = 94.0
+text = "debug"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="disp_debug3" type="RichTextLabel" parent="CanvasLayer_GUI/Control_HUD2"]
+margin_left = -0.794601
+margin_top = 57.1622
+margin_right = 221.205
+margin_bottom = 119.162
+text = "debug"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gui_left" type="Node2D" parent="CanvasLayer_GUI"]
+position = Vector2( 8, 288 )
+
+[node name="TSB_right" type="TouchScreenButton" parent="CanvasLayer_GUI/gui_left"]
+position = Vector2( 125, 0 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 17 )
+pressed = ExtResource( 18 )
+action = "ui_right"
+
+[node name="TSB_left" type="TouchScreenButton" parent="CanvasLayer_GUI/gui_left"]
+scale = Vector2( 2, 2 )
+normal = ExtResource( 13 )
+pressed = ExtResource( 14 )
+action = "ui_left"
+
+[node name="gui_right" type="Node2D" parent="CanvasLayer_GUI"]
+position = Vector2( 473.465, 282.431 )
+
+[node name="TSB_jump" type="TouchScreenButton" parent="CanvasLayer_GUI/gui_right"]
+position = Vector2( 12.535, 0 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 20 )
+pressed = ExtResource( 21 )
+action = "ui_select"
+
+[node name="TSB_melee" type="TouchScreenButton" parent="CanvasLayer_GUI/gui_right"]
+position = Vector2( 90, 0 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 68 )
+pressed = ExtResource( 22 )
+action = "mouse_2"
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="area_entered" from="Area2D_feet" to="." method="_on_Area2D_feet_area_entered"]
+[connection signal="body_entered" from="Area2D_feet" to="." method="_on_Area2D_feet_body_entered"]

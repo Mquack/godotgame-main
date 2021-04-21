@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://texture/title_page/title_row.png" type="Texture" id=1]
+[ext_resource path="res://texture/title_page/start_game_f.png" type="Texture" id=2]
+[ext_resource path="res://texture/title_page/start_game.png" type="Texture" id=3]
+[ext_resource path="res://texture/title_page/title_page.png" type="Texture" id=4]
+[ext_resource path="res://texture/title_page/exit.png" type="Texture" id=5]
+[ext_resource path="res://script/titlescreen.gd" type="Script" id=6]
+[ext_resource path="res://texture/title_page/exit_f.png" type="Texture" id=7]
+
+[node name="Titlescreen" type="Node"]
+script = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2.13, 1.2 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 20
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 88.0
+margin_top = 20.0
+margin_right = 552.0
+margin_bottom = 340.0
+size_flags_horizontal = 4
+custom_constants/separation = 150
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+margin_right = 464.0
+margin_bottom = 35.0
+texture = ExtResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_left = 65.0
+margin_top = 185.0
+margin_right = 398.0
+margin_bottom = 279.0
+size_flags_horizontal = 4
+custom_constants/separation = 30
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_right = 333.0
+margin_bottom = 33.0
+texture_normal = ExtResource( 3 )
+texture_focused = ExtResource( 2 )
+
+[node name="TextureButton2" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 63.0
+margin_right = 333.0
+margin_bottom = 94.0
+texture_normal = ExtResource( 5 )
+texture_focused = ExtResource( 7 )
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/TextureButton2" to="." method="_on_TextureButton2_pressed"]

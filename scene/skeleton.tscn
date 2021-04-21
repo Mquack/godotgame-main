@@ -1,0 +1,186 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://script/skeleton.gd" type="Script" id=4]
+[ext_resource path="res://texture/enemy/skeleton/walk/walk_1.png" type="Texture" id=6]
+[ext_resource path="res://texture/enemy/skeleton/stunned/stunned2.png" type="Texture" id=7]
+[ext_resource path="res://texture/enemy/skeleton/stunned/stunned3.png" type="Texture" id=8]
+[ext_resource path="res://texture/enemy/skeleton/stunned/stunned1.png" type="Texture" id=9]
+[ext_resource path="res://texture/enemy/skeleton/walk_red/walk2.png" type="Texture" id=10]
+[ext_resource path="res://texture/enemy/skeleton/walk_red/walk3.png" type="Texture" id=11]
+[ext_resource path="res://texture/enemy/skeleton/health_bar/health_box2.png" type="Texture" id=12]
+[ext_resource path="res://texture/enemy/skeleton/health_bar/health_box1.png" type="Texture" id=13]
+[ext_resource path="res://texture/enemy/skeleton/health_bar/health_box3.png" type="Texture" id=14]
+[ext_resource path="res://texture/enemy/skeleton/walk/walk_2.png" type="Texture" id=15]
+[ext_resource path="res://texture/enemy/skeleton/walk/walk_3.png" type="Texture" id=16]
+[ext_resource path="res://texture/enemy/skeleton/Hit/hit_2.png" type="Texture" id=17]
+[ext_resource path="res://texture/enemy/skeleton/walk_red/walk1.png" type="Texture" id=18]
+[ext_resource path="res://texture/enemy/skeleton/Hit/hit_1.png" type="Texture" id=19]
+[ext_resource path="res://texture/enemy/skeleton/death/die_2.png" type="Texture" id=20]
+[ext_resource path="res://texture/enemy/skeleton/death/die_3.png" type="Texture" id=21]
+[ext_resource path="res://texture/enemy/skeleton/death/die_1.png" type="Texture" id=22]
+[ext_resource path="res://texture/enemy/skeleton/health_bar/health_box_test.png" type="Texture" id=23]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2.65163, 16.4223 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "stunned",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 20 ) ],
+"loop": false,
+"name": "new_damage",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "new_walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "new_attack",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": false,
+"name": "new_dead",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 11 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "new_hunt",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "new_hunt_idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 7.49445
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 6.58025, 10.125 )
+
+[node name="skeleton" type="KinematicBody2D"]
+collision_layer = 16
+collision_mask = 10
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 1.5 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "new_hunt_idle"
+playing = true
+
+[node name="RayCast2_sword" type="RayCast2D" parent="."]
+position = Vector2( 0, -3 )
+enabled = true
+cast_to = Vector2( -20, 0 )
+collision_mask = 4
+collide_with_areas = true
+
+[node name="RayCast2_sword1" type="RayCast2D" parent="."]
+position = Vector2( 0, -3 )
+enabled = true
+cast_to = Vector2( -20, 13 )
+collision_mask = 4
+collide_with_areas = true
+
+[node name="RayCast2_sword2" type="RayCast2D" parent="."]
+position = Vector2( 0, -3 )
+enabled = true
+cast_to = Vector2( -20, -10 )
+collision_mask = 4
+collide_with_areas = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( -6, 0 )
+enabled = true
+cast_to = Vector2( 0, 19 )
+collision_mask = 3
+collide_with_areas = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="RayCast_head" type="RayCast2D" parent="."]
+position = Vector2( 0, -15 )
+enabled = true
+cast_to = Vector2( 0, -3 )
+collision_mask = 4
+
+[node name="A2D_head" type="Area2D" parent="."]
+position = Vector2( 0, -9 )
+collision_layer = 80
+collision_mask = 116
+
+[node name="CollisionShape2D_head" type="CollisionShape2D" parent="A2D_head"]
+shape = SubResource( 3 )
+
+[node name="A2D_body" type="Area2D" parent="."]
+position = Vector2( 0, 9 )
+collision_layer = 80
+collision_mask = 116
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="A2D_body"]
+position = Vector2( 0, -1 )
+shape = SubResource( 4 )
+
+[node name="HealthBar" type="Control" parent="."]
+margin_left = -10.0
+margin_top = -38.0
+margin_right = 30.0
+margin_bottom = 2.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar_under" type="TextureProgress" parent="HealthBar"]
+margin_right = 40.0
+margin_bottom = 40.0
+max_value = 10.0
+value = 10.0
+texture_under = ExtResource( 13 )
+texture_progress = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="TextureProgress" parent="HealthBar"]
+margin_right = 40.0
+margin_bottom = 40.0
+max_value = 10.0
+value = 10.0
+texture_under = ExtResource( 23 )
+texture_progress = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpdateHealth" type="Tween" parent="HealthBar"]
+
+[node name="HP_display" type="RichTextLabel" parent="HealthBar"]
+margin_left = 24.0
+margin_top = 3.0
+margin_right = 44.0
+margin_bottom = 23.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/default_color = Color( 0.94902, 0.133333, 0.054902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="area_entered" from="A2D_head" to="." method="_on_A2D_head_area_entered"]
+[connection signal="area_entered" from="A2D_body" to="." method="_on_A2D_body_area_entered"]
+[connection signal="tween_completed" from="HealthBar/UpdateHealth" to="." method="_on_UpdateHealth_tween_completed"]

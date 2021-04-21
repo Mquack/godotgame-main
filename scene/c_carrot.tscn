@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://texture/collectibles/collectible_carrot1.png" type="Texture" id=1]
+[ext_resource path="res://texture/collectibles/collectible_carrot3.png" type="Texture" id=2]
+[ext_resource path="res://texture/collectibles/collectible_carrot2.png" type="Texture" id=3]
+[ext_resource path="res://script/c_carrot.gd" type="Script" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+height = 20.2445
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="c_carrot" type="Area2D"]
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -2, 0 )
+frames = SubResource( 2 )
+frame = 1
+playing = true
+
+[node name="tween_pos" type="Tween" parent="."]
+[connection signal="body_entered" from="." to="." method="_on_c_carrot_body_entered"]
+[connection signal="tween_completed" from="tween_pos" to="." method="_on_tween_pos_tween_completed"]

@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scene/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://script/StageOne.gd" type="Script" id=2]
+[ext_resource path="res://scene/skeleton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://texture/Background/BG_paralax_trees.png" type="Texture" id=4]
+[ext_resource path="res://scene/c_carrot.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scene/fox.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scene/world.tscn" type="PackedScene" id=15]
+
+[node name="StageOne" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 312.641, 237.14 )
+z_index = 1
+
+[node name="skeleton1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 695.524, 235.79 )
+z_index = 1
+collision_mask = 14
+
+[node name="fox" parent="." instance=ExtResource( 14 )]
+position = Vector2( 964.389, 240.959 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_base_scale = Vector2( 0.5, 1 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1440, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 4 )
+centered = false
+offset = Vector2( 0, -390 )
+
+[node name="c_carrot" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1341.74, 251.318 )
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 128
+collision_mask = 4
+
+[node name="world_tiles" parent="." instance=ExtResource( 15 )]
+collision_layer = 10
+tile_data = PoolIntArray( 196617, 35, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 262154, 1, 0, 262155, 1, 0, 262156, 1, 0, 262157, 1, 0, 262158, 1, 0, 262159, 1, 0, 262160, 1, 0, 262161, 1, 0, 262162, 1, 0, 262163, 1, 0 )
