@@ -81,9 +81,13 @@ func flip_him():
 
 func turn_melee_ray():
 	if $AnimatedSprite.flip_h:
-			$RayCast_melee.cast_to.x = -1 * abs($RayCast_melee.cast_to.x)
+		$AnSpfeet_back.flip_h = true
+		$AnSpfeet_front.flip_h = true
+		$RayCast_melee.cast_to.x = -1 * abs($RayCast_melee.cast_to.x)
 	if !$AnimatedSprite.flip_h:
-			$RayCast_melee.cast_to.x = abs($RayCast_melee.cast_to.x)
+		$AnSpfeet_back.flip_h = false
+		$AnSpfeet_front.flip_h = false
+		$RayCast_melee.cast_to.x = abs($RayCast_melee.cast_to.x)
 
 func _input(event):
 	if event is InputEventScreenTouch:
@@ -102,10 +106,10 @@ func _input(event):
 					velocity.x = 0
 				if touch_pos.x < 0:
 					$AnimatedSprite.flip_h = true
-					$AnimatedSprite_legs.flip_h = true
+					#$AnimatedSprite_legs.flip_h = true
 				else:
 					$AnimatedSprite.flip_h = false
-					$AnimatedSprite_legs.flip_h = false
+					#$AnimatedSprite_legs.flip_h = false
 
 				if touch_pos.y < -0.981:
 					$AnimatedSprite.play(attack_array[5])
@@ -158,13 +162,16 @@ func move_char():
 				$AnimatedSprite.flip_h = false
 				if is_on_floor() and !is_hurt:
 					$AnimatedSprite.play("walk")
-					
+					$AnSpfeet_back.play("walk")
+					$AnSpfeet_front.play("walk")
 		elif Input.is_action_pressed("ui_left"):
 			velocity.x = speed * -1
 			if !is_attacking:
 				$AnimatedSprite.flip_h = true
 				if is_on_floor() and !is_hurt:
 					$AnimatedSprite.play("walk")
+					$AnSpfeet_back.play("walk")
+					$AnSpfeet_front.play("walk")
 		else:
 			if is_on_floor():
 				if velocity.x < 1:
@@ -174,21 +181,29 @@ func move_char():
 			
 			if is_on_floor() and !is_attacking and !is_hurt: 
 				$AnimatedSprite.play("idle")
+				$AnSpfeet_back.play("idle")
+				$AnSpfeet_front.play("idle")
 
 		if Input.is_action_just_pressed("ui_select"):
 			if is_on_floor():
 				#if !is_attacking:
 				velocity.y = jump_power
 				$AnimatedSprite.play("jump")
+				$AnSpfeet_back.play("jump")
+				$AnSpfeet_front.play("jump")
 			elif !dubble_jump:
 				velocity.y = jump_power
 				$AnimatedSprite.play("jump")
+				$AnSpfeet_back.play("jump")
+				$AnSpfeet_front.play("jump")
 				dubble_jump = true
 			
 		if !is_on_floor():
 			if velocity.y > 10:
 				if !is_attacking:
 					$AnimatedSprite.play("fall")
+					$AnSpfeet_back.play("fall")
+					$AnSpfeet_front.play("fall")
 		else:
 			dubble_jump = false
 		
@@ -197,6 +212,9 @@ func move_char():
 				velocity.x = 0
 			is_attacking = true
 			$AnimatedSprite.play("melee")
+			if is_on_floor():
+				$AnSpfeet_back.play("melee")
+				$AnSpfeet_front.play("melee")
 			if $RayCast_melee.is_colliding():
 				if $RayCast_melee.get_collider().get_class() == "KinematicBody2D":
 					if $RayCast_melee.get_collider().TYPE == "ENEMY":
@@ -284,6 +302,8 @@ func player_hit(hit:int = 1):
 		on_health_updated(hp)
 		velocity = Vector2(0, 0)
 		$AnimatedSprite.play("death")
+		$AnSpfeet_back.visible = false
+		$AnSpfeet_front.visible = false
 		$audioDeath.play()
 		#$CollisionShape2D.call_deferred("set_disabled", true)
 		#TODO: Eliminate collision with enemies after death.
@@ -302,6 +322,9 @@ func _on_Area2D_feet_body_entered(body):
 				velocity.y = jump_power * 1.5
 				dubble_jump = false
 				$AnimatedSprite.play("jump")
+				$AnSpfeet_back.play("jump")
+				$AnSpfeet_front.play("jump")
+				
 
 
 func insta_death_ground():

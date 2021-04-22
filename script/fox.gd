@@ -179,6 +179,8 @@ func _on_AnimatedSprite_animation_finished():
 				get_node("/root/StageOne/player").player_hit()
 				get_node("/root/StageOne/player").player_knockback(self.name)
 	is_attacking = false
+	if !is_dead:
+		$AniSpr_feet.visible = true
 
 #if attacking is possible, play animation and control attack rate and bools
 func attack_player(dir:int = 1):
@@ -226,7 +228,8 @@ func dead(hitpoints):
 		on_health_updated(hp)
 		$AniSpr_body.set_z_index(-1)
 		$AniSpr_feet.set_z_index(-1)
-		#$AnimatedSprite.play("new_dead")
+		$AniSpr_feet.visible = false		
+		$AniSpr_body.play("death")
 		$CollisionShape2D.call_deferred("set_disabled", true)
 		$A2D_body/CollisionShape2D.call_deferred("set_disabled", true)
 		$A2D_head/CollisionShape2D.call_deferred("set_disabled", true)
@@ -234,7 +237,8 @@ func dead(hitpoints):
 	else:
 		knockback()
 		is_attacking = true
-		#$AnimatedSprite.play("new_damage")
+		$AniSpr_feet.visible = false
+		$AniSpr_body.play("hurt")
 		hp -= hitpoints
 		on_health_updated(hp)
 

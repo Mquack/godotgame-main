@@ -1,173 +1,634 @@
-[gd_scene load_steps=89 format=2]
+[gd_scene load_steps=153 format=2]
 
 [ext_resource path="res://texture/player/health_bar/health_box3.png" type="Texture" id=1]
 [ext_resource path="res://script/player.gd" type="Script" id=2]
 [ext_resource path="res://texture/player/health_bar/health_box_test.png" type="Texture" id=3]
-[ext_resource path="res://texture/player/kanan_new/idle/kanan_idle_1.png" type="Texture" id=4]
-[ext_resource path="res://texture/player/kanan_new/idle/kanan_idle_5.png" type="Texture" id=5]
-[ext_resource path="res://texture/player/kanan_new/idle/kanan_idle_6.png" type="Texture" id=6]
+[ext_resource path="res://texture/player/kanan_new/death/kanan_death-Sheet.png" type="Texture" id=4]
+[ext_resource path="res://texture/player/kanan_new/fall/kanan_fall-Sheet.png" type="Texture" id=5]
+[ext_resource path="res://texture/player/kanan_new/hurt/hurt2/kanan_hurt2-Sheet.png" type="Texture" id=6]
 [ext_resource path="res://audio/gunshot2.ogg" type="AudioStream" id=7]
 [ext_resource path="res://audio/player_death.ogg" type="AudioStream" id=8]
-[ext_resource path="res://texture/player/kanan_new/idle/kanan_idle_3.png" type="Texture" id=9]
-[ext_resource path="res://texture/player/kanan_new/idle/kanan_idle_2.png" type="Texture" id=10]
-[ext_resource path="res://texture/player/kanan_new/idle/kanan_idle_4.png" type="Texture" id=11]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot1/kanan_shoot1_2.png" type="Texture" id=12]
+[ext_resource path="res://texture/player/kanan_new/melee/kanan_melee-Sheet.png" type="Texture" id=9]
+[ext_resource path="res://texture/player/kanan_new/walk/kanan_walk_unarmed-Sheet.png" type="Texture" id=10]
+[ext_resource path="res://texture/player/kanan_new/shoot/kanan_shoot-Sheet.png" type="Texture" id=11]
+[ext_resource path="res://texture/player/kanan_new/walk/kanan_walk-Sheet.png" type="Texture" id=12]
 [ext_resource path="res://texture/control_fat/Left_G.PNG" type="Texture" id=13]
 [ext_resource path="res://texture/control_fat/Left_B.PNG" type="Texture" id=14]
-[ext_resource path="res://texture/player/kanan_new/idle/kanan_idle_7.png" type="Texture" id=15]
-[ext_resource path="res://texture/player/kanan_new/idle/kanan_idle_8.png" type="Texture" id=16]
+[ext_resource path="res://texture/player/kanan_new/idle/kanan_idle-Sheet.png" type="Texture" id=15]
+[ext_resource path="res://texture/player/kanan_new/idle/kanan_idle_unarmed-Sheet.png" type="Texture" id=16]
 [ext_resource path="res://texture/control_fat/Right_G.PNG" type="Texture" id=17]
 [ext_resource path="res://texture/control_fat/Right_B.PNG" type="Texture" id=18]
 [ext_resource path="res://script/CL_GUI.gd" type="Script" id=19]
 [ext_resource path="res://texture/control_fat/Up_G.PNG" type="Texture" id=20]
 [ext_resource path="res://texture/control_fat/Up_B.PNG" type="Texture" id=21]
 [ext_resource path="res://texture/control_fat/Melee_B.PNG" type="Texture" id=22]
-[ext_resource path="res://texture/player/kanan_new/death/kanan_death2.png" type="Texture" id=23]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot3/kanan_shoot3_2.png" type="Texture" id=24]
-[ext_resource path="res://texture/player/kanan_new/fall/kanan_fall3.png" type="Texture" id=25]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot2/kanan_shoot2_3.png" type="Texture" id=26]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot4/kanan_shoot4_2.png" type="Texture" id=27]
-[ext_resource path="res://texture/player/kanan_new/death/kanan_death1.png" type="Texture" id=28]
-[ext_resource path="res://texture/player/kanan_new/hurt/hurt2/kanan_hurt2_2.png" type="Texture" id=29]
-[ext_resource path="res://texture/player/kanan_new/jump/kanan_jump1.png" type="Texture" id=30]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot1/kanan_shoot1_1.png" type="Texture" id=31]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot4/kanan_shoot4_3.png" type="Texture" id=32]
-[ext_resource path="res://texture/player/kanan_new/death/kanan_death5.png" type="Texture" id=33]
-[ext_resource path="res://texture/player/kanan_new/fall/kanan_fall2.png" type="Texture" id=34]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot1/kanan_shoot1_4.png" type="Texture" id=35]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot2/kanan_shoot2_2.png" type="Texture" id=36]
-[ext_resource path="res://texture/player/kanan_new/hurt/hurt2/kanan_hurt2_3.png" type="Texture" id=37]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot4/kanan_shoot4_4.png" type="Texture" id=38]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot3/kanan_shoot3_4.png" type="Texture" id=39]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot5/kanan_shoot5_2.png" type="Texture" id=40]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot6/kanan_shoot6_1.png" type="Texture" id=41]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot2/kanan_shoot2_1.png" type="Texture" id=42]
-[ext_resource path="res://texture/player/kanan_new/walk/weapon/kanan_walk_weapon2.png" type="Texture" id=43]
-[ext_resource path="res://texture/player/kanan_new/walk/weapon/kanan_walk_weapon3.png" type="Texture" id=44]
-[ext_resource path="res://texture/player/kanan_new/death/kanan_death4.png" type="Texture" id=45]
-[ext_resource path="res://texture/player/kanan_new/jump/kanan_jump2.png" type="Texture" id=46]
-[ext_resource path="res://texture/player/kanan_new/melee/melee1/kanan_melee1_1.png" type="Texture" id=47]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot6/kanan_shoot6_2.png" type="Texture" id=48]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot6/kanan_shoot6_3.png" type="Texture" id=49]
-[ext_resource path="res://texture/player/kanan_new/walk/kanan_walk1.png" type="Texture" id=50]
-[ext_resource path="res://texture/player/kanan_new/walk/weapon/kanan_walk_weapon4.png" type="Texture" id=51]
-[ext_resource path="res://texture/player/kanan_new/walk/kanan_walk2.png" type="Texture" id=52]
-[ext_resource path="res://texture/player/kanan_new/walk/kanan_walk3.png" type="Texture" id=53]
-[ext_resource path="res://texture/player/kanan_new/walk/kanan_walk4.png" type="Texture" id=54]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot1/kanan_shoot1_3.png" type="Texture" id=55]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot5/kanan_shoot5_1.png" type="Texture" id=56]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot2/kanan_shoot2_4.png" type="Texture" id=57]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot5/kanan_shoot5_4.png" type="Texture" id=58]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot6/kanan_shoot6_4.png" type="Texture" id=59]
-[ext_resource path="res://texture/player/kanan_new/jump/kanan_jump3.png" type="Texture" id=60]
-[ext_resource path="res://texture/player/kanan_new/hurt/hurt2/kanan_hurt2_4.png" type="Texture" id=61]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot3/kanan_shoot3_3.png" type="Texture" id=62]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot5/kanan_shoot5_3.png" type="Texture" id=63]
-[ext_resource path="res://texture/player/kanan_new/walk/weapon/kanan_walk_weapon1.png" type="Texture" id=64]
-[ext_resource path="res://texture/player/kanan_new/death/kanan_death3.png" type="Texture" id=65]
+[ext_resource path="res://texture/player/kanan_new/jump/kanan_jump-Sheet.png" type="Texture" id=23]
+[ext_resource path="res://texture/player/kanan_new/walk/kanan_walk_back_feet-Sheet.png" type="Texture" id=24]
+[ext_resource path="res://texture/player/kanan_new/fall/kanan_fall_back_feet-Sheet.png" type="Texture" id=25]
+[ext_resource path="res://texture/player/kanan_new/jump/kanan_jump_back_feet-Sheet.png" type="Texture" id=26]
+[ext_resource path="res://texture/player/kanan_new/idle/kanan_idle_back_feet.png" type="Texture" id=27]
+[ext_resource path="res://texture/player/kanan_new/melee/kanan_melee_back_feet-Sheet.png" type="Texture" id=28]
+[ext_resource path="res://texture/player/kanan_new/walk/kanan_walk_front_feet-Sheet.png" type="Texture" id=29]
+[ext_resource path="res://texture/player/kanan_new/melee/kanan_melee_front_feet-Sheet.png" type="Texture" id=30]
+[ext_resource path="res://texture/player/kanan_new/jump/kanan_jump_front_feet-Sheet.png" type="Texture" id=31]
+[ext_resource path="res://texture/player/kanan_new/idle/kanan_idle_front_feet.png" type="Texture" id=32]
+[ext_resource path="res://texture/player/kanan_new/fall/kanan_fall_front_feet-Sheet.png" type="Texture" id=33]
 [ext_resource path="res://texture/player/health_bar/health_box1.png" type="Texture" id=66]
 [ext_resource path="res://texture/player/health_bar/health_box2.png" type="Texture" id=67]
 [ext_resource path="res://texture/control_fat/Melee_G.PNG" type="Texture" id=68]
-[ext_resource path="res://texture/player/kanan_new/fall/kanan_fall1.png" type="Texture" id=69]
-[ext_resource path="res://texture/player/kanan_new/jump/kanan_jump4.png" type="Texture" id=70]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot4/kanan_shoot4_1.png" type="Texture" id=71]
-[ext_resource path="res://texture/player/kanan_new/melee/melee1/kanan_melee1_2.png" type="Texture" id=72]
-[ext_resource path="res://texture/player/kanan_new/hurt/hurt2/kanan_hurt2_1.png" type="Texture" id=73]
-[ext_resource path="res://texture/player/kanan_new/fall/kanan_fall4.png" type="Texture" id=74]
-[ext_resource path="res://texture/player/kanan_new/melee/melee1/kanan_melee1_3.png" type="Texture" id=75]
-[ext_resource path="res://texture/player/kanan_new/melee/melee1/kanan_melee1_4.png" type="Texture" id=76]
-[ext_resource path="res://texture/player/kanan_new/shoot/shoot3/kanan_shoot3_1.png" type="Texture" id=77]
-[ext_resource path="res://texture/player/kanan_new/idle/crossbow/kanan_idle_crossbow6.png" type="Texture" id=78]
-[ext_resource path="res://texture/player/kanan_new/idle/crossbow/kanan_idle_crossbow5.png" type="Texture" id=79]
-[ext_resource path="res://texture/player/kanan_new/idle/crossbow/kanan_idle_crossbow2.png" type="Texture" id=80]
-[ext_resource path="res://texture/player/kanan_new/idle/crossbow/kanan_idle_crossbow7.png" type="Texture" id=81]
-[ext_resource path="res://texture/player/kanan_new/idle/crossbow/kanan_idle_crossbow8.png" type="Texture" id=82]
-[ext_resource path="res://texture/player/kanan_new/idle/crossbow/kanan_idle_crossbow3.png" type="Texture" id=83]
-[ext_resource path="res://texture/player/kanan_new/idle/crossbow/kanan_idle_crossbow1.png" type="Texture" id=84]
-[ext_resource path="res://texture/player/kanan_new/idle/crossbow/kanan_idle_crossbow4.png" type="Texture" id=85]
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 15 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 15 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 15 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 15 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 15 )
+region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 15 )
+region = Rect2( 384, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 15 )
+region = Rect2( 448, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 12 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 12 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 12 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 6 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 6 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 6 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 5 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 5 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 5 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 4 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 4 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 4 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 192, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 11 )
+region = Rect2( 64, 192, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 11 )
+region = Rect2( 128, 192, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 11 )
+region = Rect2( 192, 192, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 11 )
+region = Rect2( 64, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 11 )
+region = Rect2( 128, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 11 )
+region = Rect2( 192, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 11 )
+region = Rect2( 64, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 11 )
+region = Rect2( 128, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 11 )
+region = Rect2( 192, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 10 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 10 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 10 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 11 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 11 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 11 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 16 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 16 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 16 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=52]
+atlas = ExtResource( 16 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 16 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 16 )
+region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=55]
+atlas = ExtResource( 16 )
+region = Rect2( 384, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 16 )
+region = Rect2( 448, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=57]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 320, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=58]
+atlas = ExtResource( 11 )
+region = Rect2( 64, 320, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=59]
+atlas = ExtResource( 11 )
+region = Rect2( 128, 320, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 11 )
+region = Rect2( 192, 320, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=61]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=62]
+atlas = ExtResource( 9 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=63]
+atlas = ExtResource( 9 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=64]
+atlas = ExtResource( 9 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=65]
+atlas = ExtResource( 23 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=66]
+atlas = ExtResource( 23 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=67]
+atlas = ExtResource( 23 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=68]
+atlas = ExtResource( 23 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=69]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 256, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=70]
+atlas = ExtResource( 11 )
+region = Rect2( 64, 256, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=71]
+atlas = ExtResource( 11 )
+region = Rect2( 128, 256, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=72]
+atlas = ExtResource( 11 )
+region = Rect2( 192, 256, 64, 64 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 84 ), ExtResource( 80 ), ExtResource( 83 ), ExtResource( 85 ), ExtResource( 79 ), ExtResource( 78 ), ExtResource( 81 ), ExtResource( 82 ) ],
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 64 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 51 ) ],
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 73 ), ExtResource( 29 ), ExtResource( 37 ), ExtResource( 61 ) ],
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
 "loop": false,
 "name": "hurt",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 69 ), ExtResource( 34 ), ExtResource( 25 ), ExtResource( 74 ) ],
+"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
 "loop": false,
 "name": "fall",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 28 ), ExtResource( 23 ), ExtResource( 65 ), ExtResource( 45 ), ExtResource( 33 ) ],
+"frames": [ SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ],
 "loop": false,
 "name": "death",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 56 ), ExtResource( 40 ), ExtResource( 63 ), ExtResource( 58 ) ],
-"loop": true,
-"name": "shoot4",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 41 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 59 ) ],
-"loop": true,
-"name": "shoot5",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 47 ), ExtResource( 72 ), ExtResource( 75 ), ExtResource( 76 ) ],
-"loop": false,
-"name": "melee",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 30 ), ExtResource( 46 ), ExtResource( 60 ), ExtResource( 70 ) ],
-"loop": false,
-"name": "jump",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 50 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ) ],
-"loop": true,
-"name": "walk-unarmed",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 31 ), ExtResource( 12 ), ExtResource( 55 ), ExtResource( 35 ) ],
-"loop": true,
-"name": "shoot0",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 42 ), ExtResource( 36 ), ExtResource( 26 ), ExtResource( 57 ) ],
-"loop": true,
-"name": "shoot1",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 77 ), ExtResource( 24 ), ExtResource( 62 ), ExtResource( 39 ) ],
-"loop": true,
-"name": "shoot2",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 71 ), ExtResource( 27 ), ExtResource( 32 ), ExtResource( 38 ) ],
+"frames": [ SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
 "loop": true,
 "name": "shoot3",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"frames": [ SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ) ],
+"loop": true,
+"name": "shoot1",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ) ],
+"loop": true,
+"name": "shoot2",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ) ],
+"loop": true,
+"name": "walk-unarmed",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ) ],
+"loop": true,
+"name": "shoot0",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ) ],
 "loop": true,
 "name": "idle-unarmed",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ) ],
+"loop": true,
+"name": "shoot5",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ) ],
+"loop": false,
+"name": "melee",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ) ],
+"loop": false,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ) ],
+"loop": true,
+"name": "shoot4",
+"speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="AtlasTexture" id=95]
+atlas = ExtResource( 32 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=96]
+atlas = ExtResource( 29 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=97]
+atlas = ExtResource( 29 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=98]
+atlas = ExtResource( 29 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=99]
+atlas = ExtResource( 29 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=100]
+atlas = ExtResource( 33 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=101]
+atlas = ExtResource( 33 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=102]
+atlas = ExtResource( 33 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=103]
+atlas = ExtResource( 33 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=104]
+atlas = ExtResource( 31 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=105]
+atlas = ExtResource( 31 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=106]
+atlas = ExtResource( 31 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=107]
+atlas = ExtResource( 31 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=108]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=109]
+atlas = ExtResource( 30 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=110]
+atlas = ExtResource( 30 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=111]
+atlas = ExtResource( 30 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=112]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=113]
+atlas = ExtResource( 30 )
+region = Rect2( 64, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=114]
+atlas = ExtResource( 30 )
+region = Rect2( 128, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=115]
+atlas = ExtResource( 30 )
+region = Rect2( 192, 64, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=94]
+animations = [ {
+"frames": [ SubResource( 95 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ) ],
+"loop": true,
+"name": "fall",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 104 ), SubResource( 105 ), SubResource( 106 ), SubResource( 107 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 108 ), SubResource( 109 ), SubResource( 110 ), SubResource( 111 ) ],
+"loop": true,
+"name": "melee1",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 112 ), SubResource( 113 ), SubResource( 114 ), SubResource( 115 ) ],
+"loop": true,
+"name": "melee2",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=116]
+atlas = ExtResource( 27 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=117]
+atlas = ExtResource( 24 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=118]
+atlas = ExtResource( 24 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=119]
+atlas = ExtResource( 24 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=120]
+atlas = ExtResource( 24 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=121]
+atlas = ExtResource( 25 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=122]
+atlas = ExtResource( 25 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=123]
+atlas = ExtResource( 25 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=124]
+atlas = ExtResource( 25 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=125]
+atlas = ExtResource( 26 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=126]
+atlas = ExtResource( 26 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=127]
+atlas = ExtResource( 26 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=128]
+atlas = ExtResource( 26 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=129]
+atlas = ExtResource( 28 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=130]
+atlas = ExtResource( 28 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=131]
+atlas = ExtResource( 28 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=132]
+atlas = ExtResource( 28 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=133]
+atlas = ExtResource( 28 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=134]
+atlas = ExtResource( 28 )
+region = Rect2( 64, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=135]
+atlas = ExtResource( 28 )
+region = Rect2( 128, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=136]
+atlas = ExtResource( 28 )
+region = Rect2( 192, 64, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=137]
+animations = [ {
+"frames": [ SubResource( 116 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 117 ), SubResource( 118 ), SubResource( 119 ), SubResource( 120 ) ],
+"loop": false,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 121 ), SubResource( 122 ), SubResource( 123 ), SubResource( 124 ) ],
+"loop": true,
+"name": "fall",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 125 ), SubResource( 126 ), SubResource( 127 ), SubResource( 128 ) ],
+"loop": false,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 129 ), SubResource( 130 ), SubResource( 131 ), SubResource( 132 ) ],
+"loop": true,
+"name": "melee1",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 133 ), SubResource( 134 ), SubResource( 135 ), SubResource( 136 ) ],
+"loop": true,
+"name": "melee2",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 5.98176, 11.8519 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 5.73556, 0.651539 )
 
 [node name="player" type="KinematicBody2D"]
@@ -180,14 +641,24 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+z_index = 1
 frames = SubResource( 1 )
-animation = "fall"
-frame = 3
+animation = "idle"
+
+[node name="AnSpfeet_front" type="AnimatedSprite" parent="."]
+z_index = 1
+frames = SubResource( 94 )
+animation = "idle"
+
+[node name="AnSpfeet_back" type="AnimatedSprite" parent="."]
+frames = SubResource( 137 )
+animation = "idle"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 2 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 16, 6 )
@@ -206,11 +677,13 @@ smoothing_speed = 3.0
 editor_draw_limits = true
 
 [node name="RayCast_player" type="RayCast2D" parent="."]
+visible = false
 enabled = true
 cast_to = Vector2( 0, 16 )
 collision_mask = 58
 
 [node name="RayCast_melee" type="RayCast2D" parent="."]
+visible = false
 enabled = true
 cast_to = Vector2( 25, 0 )
 collision_mask = 48
@@ -250,13 +723,14 @@ __meta__ = {
 [node name="UpdateHealth" type="Tween" parent="HealthBar"]
 
 [node name="Area2D_feet" type="Area2D" parent="."]
+visible = false
 position = Vector2( 0, 32 )
 collision_layer = 4
 collision_mask = 48
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_feet"]
 position = Vector2( 0, -17.5 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="shooting" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
