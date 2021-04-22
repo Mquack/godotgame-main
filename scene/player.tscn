@@ -720,7 +720,6 @@ __meta__ = {
 [node name="UpdateHealth" type="Tween" parent="HealthBar"]
 
 [node name="Area2D_feet" type="Area2D" parent="."]
-visible = false
 position = Vector2( 0, 32 )
 collision_layer = 4
 collision_mask = 48
@@ -825,5 +824,4 @@ normal = ExtResource( 68 )
 pressed = ExtResource( 22 )
 action = "mouse_2"
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
-[connection signal="area_entered" from="Area2D_feet" to="." method="_on_Area2D_feet_area_entered"]
 [connection signal="body_entered" from="Area2D_feet" to="." method="_on_Area2D_feet_body_entered"]

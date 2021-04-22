@@ -359,3 +359,4 @@ func player_knockback(enemy):
 		self.global_position.x += 20
 	else:
 		self.global_position.x -= 20
+

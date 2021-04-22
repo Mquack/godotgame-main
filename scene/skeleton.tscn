@@ -35,30 +35,30 @@ animations = [ {
 "name": "new_damage",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 18 ), ExtResource( 11 ), ExtResource( 10 ) ],
 "loop": true,
-"name": "new_walk",
-"speed": 5.0
+"name": "new_hunt",
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 19 ), ExtResource( 17 ), ExtResource( 18 ) ],
 "loop": false,
 "name": "new_attack",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 22 ), ExtResource( 20 ), ExtResource( 21 ) ],
-"loop": false,
-"name": "new_dead",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 18 ), ExtResource( 11 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 15 ), ExtResource( 16 ) ],
 "loop": true,
-"name": "new_hunt",
-"speed": 10.0
+"name": "new_walk",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 18 ) ],
 "loop": true,
 "name": "new_hunt_idle",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": false,
+"name": "new_dead",
+"speed": 10.0
 } ]
 
 [sub_resource type="CircleShape2D" id=3]
