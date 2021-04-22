@@ -23,6 +23,8 @@ const max_health = 10
 var carrot_ammo = 50
 
 var is_hurt = false
+var wall_jumped = false
+var wall_jump_pos
 
 var looking_dir = 1
 
@@ -39,9 +41,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	#print(velocity.y)
 	turn_melee_ray()
-
 	if !is_dead:
 		update_hud()
 		move_char()
@@ -50,6 +50,7 @@ func _physics_process(delta):
 	else:
 		velocity.y += gravity
 		velocity = move_and_slide(velocity, ground_lvl)
+
 
 func on_health_updated(hp):
 	health_bar.value = hp
@@ -157,15 +158,18 @@ func move_char():
 #			speed = walk_speed
 			
 		if Input.is_action_pressed("ui_right"):
-			velocity.x = speed
+			if can_move_after_wall_jump():
+				velocity.x = speed
 			if !is_attacking:
 				$AnimatedSprite.flip_h = false
 				if is_on_floor() and !is_hurt:
 					$AnimatedSprite.play("walk")
 					$AnSpfeet_back.play("walk")
 					$AnSpfeet_front.play("walk")
+					
 		elif Input.is_action_pressed("ui_left"):
-			velocity.x = speed * -1
+			if can_move_after_wall_jump():
+				velocity.x = speed * -1
 			if !is_attacking:
 				$AnimatedSprite.flip_h = true
 				if is_on_floor() and !is_hurt:
@@ -185,13 +189,15 @@ func move_char():
 				$AnSpfeet_front.play("idle")
 
 		if Input.is_action_just_pressed("ui_select"):
+			wall_jump()
 			if is_on_floor():
 				#if !is_attacking:
 				velocity.y = jump_power
 				$AnimatedSprite.play("jump")
 				$AnSpfeet_back.play("jump")
 				$AnSpfeet_front.play("jump")
-			elif !dubble_jump:
+				dubble_jump = false
+			elif !dubble_jump and !wall_jumped:
 				velocity.y = jump_power
 				$AnimatedSprite.play("jump")
 				$AnSpfeet_back.play("jump")
@@ -275,19 +281,34 @@ func move_char():
 	velocity = move_and_slide(velocity, ground_lvl)
 
 
+func wall_jump():
+	if $RayCast_melee.is_colliding() and is_on_wall() and !is_on_floor():
+		for i in range(get_slide_count()):
+			if (get_slide_collision(i).collider.name) == "world_tiles":
+				velocity.y = jump_power
+				if $AnimatedSprite.flip_h:
+					velocity.x = speed
+				else:
+					velocity.x = speed * -1
+				dubble_jump = false
+				wall_jumped = true
+				wall_jump_pos = self.global_position.x
+
+
+func can_move_after_wall_jump():
+	if wall_jumped:
+		if abs(self.global_position.x - wall_jump_pos) > 100:
+			wall_jumped = false
+			return true
+		else:
+			return false
+	else:
+		return true
+
+
 func update_hud():
 	#$Camera2D/Control_HUD/ammo_count.set_text(str(carrot_ammo))
 	$CanvasLayer_GUI/Control_HUD2/ammo_count.set_text(str(carrot_ammo))
-
-
-func extra_bounce():
-	if $RayCast_player.is_colliding():
-		if $RayCast_player.get_collider().TYPE == "ENEMY":
-			if $RayCast_player.get_collider().BOUNCEABLE == true:
-				velocity.y = jump_power * 1.5
-				dubble_jump = false
-				$AnimatedSprite.play("jump")
-
 
 
 func _on_AnimatedSprite_animation_finished():
@@ -306,6 +327,7 @@ func player_hit(hit:int = 1):
 		$AnSpfeet_front.visible = false
 		$audioDeath.play()
 		#$CollisionShape2D.call_deferred("set_disabled", true)
+		#$CollisionShape2D.set_disabled(true)
 		#TODO: Eliminate collision with enemies after death.
 	elif hp > hit:
 		hp -= hit
@@ -315,8 +337,6 @@ func player_hit(hit:int = 1):
 
 
 func _on_Area2D_feet_body_entered(body):
-	print(body)
-	print(velocity.y)
 	if body.TYPE == "ENEMY":
 			if body.BOUNCEABLE == true:
 				velocity.y = jump_power * 1.5

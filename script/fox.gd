@@ -39,7 +39,7 @@ func _ready():
 
 func _physics_process(delta):
 	if !follow_target_state():
-		if !is_dead and !is_attacking:
+		if !is_dead:# and !is_attacking:
 			if $RayCast2D.is_colliding():
 				velocity.x = SPEED * direction
 				
@@ -88,10 +88,11 @@ func follow_target():
 	if !is_dead:
 		var direction_temp = (abs(get_node("/root/StageOne/player").global_position.x) - abs($Position2D.global_position.x))
 		var dir_turn = (abs(get_node("/root/StageOne/player").global_position.x) - abs(self.global_position.x))
-		
-		if direction_temp > 3:
-			MOVE = true
-		elif direction_temp < -3:
+#		if direction_temp > 1:
+#			MOVE = true
+#		elif direction_temp < 1:
+#			MOVE = true
+		if abs(direction_temp) > 10:
 			MOVE = true
 		else:
 			MOVE = false
@@ -131,9 +132,13 @@ func follow_target():
 				
 		MOVE = true
 
-func avoid_ledge():
+func avoid_ledge_and_wall():
 	if follow_state:
-		if $RayCast2D.is_colliding() == false:
+		if $RayCast2D.is_colliding() == false or is_on_wall():
+			if is_on_wall():
+				for i in range(get_slide_count()):
+					if (get_slide_collision(i).collider.name) == "player":
+						return false
 			follow_distance = 0
 			old_x = self.global_position.x
 			return true
@@ -142,7 +147,7 @@ func avoid_ledge():
 func follow_target_state():
 	follow_direction = get_node("/root/StageOne/player").global_position - self.global_position
 	distance = sqrt(follow_direction.x * follow_direction.x + follow_direction.y * follow_direction.y)
-	if avoid_ledge():
+	if avoid_ledge_and_wall():
 		return
 	elif old_x:
 		if old_x + 100 > (self.global_position.x) or old_x - 100 < (self.global_position.x):
@@ -162,22 +167,19 @@ func _on_Timer_timeout():
 
 #when animation finished check for collision with player and do damage
 func _on_AnimatedSprite_animation_finished():
-	if is_attacking:
-		if $RayCast_sword0.is_colliding():
-			if $RayCast_sword0.get_collider().name == "player":
-				#print("HIT - 0")
-				get_node("/root/StageOne/player").player_hit()
-				get_node("/root/StageOne/player").player_knockback(self.name)
-		elif $RayCast_sword1.is_colliding():
-			if $RayCast_sword1.get_collider().name == "player":
-				#print("HIT - 1")
-				get_node("/root/StageOne/player").player_hit()
-				get_node("/root/StageOne/player").player_knockback(self.name)
-		elif $RayCast_sword2.is_colliding():
-			if $RayCast_sword2.get_collider().name == "player":
-				#print("HIT - 2")
-				get_node("/root/StageOne/player").player_hit()
-				get_node("/root/StageOne/player").player_knockback(self.name)
+#	if is_attacking:
+#		if $RayCast_sword0.is_colliding():
+#			if $RayCast_sword0.get_collider().name == "player":
+#				get_node("/root/StageOne/player").player_hit()
+#				get_node("/root/StageOne/player").player_knockback(self.name)
+#		elif $RayCast_sword1.is_colliding():
+#			if $RayCast_sword1.get_collider().name == "player":
+#				get_node("/root/StageOne/player").player_hit()
+#				get_node("/root/StageOne/player").player_knockback(self.name)
+#		elif $RayCast_sword2.is_colliding():
+#			if $RayCast_sword2.get_collider().name == "player":
+#				get_node("/root/StageOne/player").player_hit()
+#				get_node("/root/StageOne/player").player_knockback(self.name)
 	is_attacking = false
 	if !is_dead:
 		$AniSpr_feet.visible = true
@@ -194,6 +196,8 @@ func attack_player(dir:int = 1):
 			$AniSpr_body.play("attack1")
 		elif dir == 2:
 			$AniSpr_body.play("attack2")
+		get_node("/root/StageOne/player").player_hit()
+		get_node("/root/StageOne/player").player_knockback(self.name)
 		yield(get_tree().create_timer(rate_attack), "timeout")
 		can_attack = true
 

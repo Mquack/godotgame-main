@@ -41,70 +41,70 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2.76318, 15.5579 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 37 )
 region = Rect2( 0, 0, 96, 80 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 37 )
 region = Rect2( 96, 0, 96, 80 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 37 )
 region = Rect2( 192, 0, 96, 80 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 37 )
 region = Rect2( 288, 0, 96, 80 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 37 )
 region = Rect2( 384, 0, 96, 80 )
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
 "frames": [ ExtResource( 13 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "walk",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
-"loop": true,
-"name": "hurt",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 35 ), ExtResource( 34 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 36 ) ],
 "loop": false,
 "name": "death",
 "speed": 5.0
 }, {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "hurt",
+"speed": 10.0
+}, {
 "frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "attack1",
-"speed": 15.0
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 19 ), ExtResource( 25 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "attack2",
+"speed": 20.0
 }, {
 "frames": [ ExtResource( 22 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ) ],
 "loop": true,
 "name": "attack0",
-"speed": 15.0
+"speed": 20.0
 }, {
 "frames": [ ExtResource( 16 ), ExtResource( 27 ), ExtResource( 17 ), ExtResource( 28 ) ],
 "loop": true,
 "name": "attack_run",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 21 ), ExtResource( 19 ), ExtResource( 25 ), ExtResource( 20 ) ],
+"frames": [ ExtResource( 13 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "attack2",
-"speed": 15.0
+"name": "walk",
+"speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
 "frames": [ ExtResource( 8 ), ExtResource( 15 ), ExtResource( 10 ), ExtResource( 11 ) ],
 "loop": true,
@@ -122,10 +122,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=9]
 radius = 8.50368
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 6.1374, 6.53289 )
 
 [node name="fox" type="KinematicBody2D"]
@@ -145,13 +145,14 @@ collision_mask = 10
 
 [node name="AniSpr_body" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -14 )
-frames = SubResource( 2 )
-animation = "hurt"
+frames = SubResource( 7 )
+animation = "attack1"
+frame = 2
 
 [node name="AniSpr_feet" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 0, -14 )
-frames = SubResource( 3 )
+frames = SubResource( 8 )
 animation = "idle_feet"
 
 [node name="RayCast_sword0" type="RayCast2D" parent="."]
@@ -160,8 +161,9 @@ cast_to = Vector2( -26, -26 )
 collision_mask = 4
 
 [node name="RayCast_sword1" type="RayCast2D" parent="."]
+position = Vector2( -0.33371, 0.667419 )
 enabled = true
-cast_to = Vector2( -26, 0 )
+cast_to = Vector2( -33, 0 )
 collision_mask = 4
 
 [node name="RayCast_sword2" type="RayCast2D" parent="."]
@@ -172,19 +174,19 @@ collision_mask = 4
 [node name="A2D_head" type="Area2D" parent="."]
 position = Vector2( 0, -14 )
 collision_layer = 80
-collision_mask = 116
+collision_mask = 68
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="A2D_head"]
 position = Vector2( 0, 2 )
-shape = SubResource( 4 )
+shape = SubResource( 9 )
 
 [node name="A2D_body" type="Area2D" parent="."]
 position = Vector2( 0, 3 )
 collision_layer = 80
-collision_mask = 116
+collision_mask = 68
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="A2D_body"]
-shape = SubResource( 5 )
+shape = SubResource( 10 )
 
 [node name="HealthBar" type="Control" parent="."]
 margin_top = -40.0
