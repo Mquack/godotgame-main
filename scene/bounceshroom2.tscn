@@ -1,58 +1,57 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://texture/interactables/mushroom_bounce-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://texture/interactables/mushroom_bounce_2-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://script/bounceshroom.gd" type="Script" id=2]
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 128, 160 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
 region = Rect2( 128, 0, 128, 160 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
 region = Rect2( 256, 0, 128, 160 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
 region = Rect2( 384, 0, 128, 160 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 128, 160 )
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
-"loop": false,
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
 "name": "bounce",
-"speed": 15.0
+"speed": 10.0
 }, {
-"frames": [ SubResource( 11 ) ],
+"frames": [ SubResource( 5 ) ],
 "loop": true,
 "name": "idle",
-"speed": 10.0
+"speed": 5.0
 } ]
 
-[node name="bounceshroom" type="StaticBody2D"]
+[node name="bounceshroom2" type="StaticBody2D"]
 z_index = 10
 collision_layer = 8
 collision_mask = 4
 script = ExtResource( 2 )
 
 [node name="bounce" type="CollisionPolygon2D" parent="."]
-position = Vector2( 0, 16 )
 z_index = 1
-polygon = PoolVector2Array( -24, -52, 16, -52, 32, -36, -4, -40, -32, -32, -44, -32 )
+polygon = PoolVector2Array( -40, -56, -32, -64, 8, -64, 24, -48, 32, -32, 24, -32, 0, -48, -32, -48, -48, -40 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 10
 collision_mask = 14
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PoolVector2Array( -44, -16, -24, -36, 16, -36, 32, -20, -4, -24, -32, -16 )
+polygon = PoolVector2Array( -48, -40, -40, -56, -32, -64, 8, -64, 24, -48, 32, -32, 24, -32, 0, -48, -32, -48 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
