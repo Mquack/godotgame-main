@@ -3,6 +3,8 @@
 [ext_resource path="res://world_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://script/world_tile.gd" type="Script" id=2]
 
+
+
 [node name="world_tiles" type="TileMap"]
 tile_set = ExtResource( 1 )
 cell_clip_uv = true
