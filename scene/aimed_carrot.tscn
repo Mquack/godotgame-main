@@ -18,7 +18,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 5.99996, 1.53337 )
+extents = Vector2( 5.99996, 0.534503 )
 
 [node name="aimed_carrot" type="Area2D"]
 collision_layer = 64
@@ -28,7 +28,7 @@ script = ExtResource( 4 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -0.5 )
 frames = SubResource( 1 )
-animation = "new_smush"
+animation = "new_shoot"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )

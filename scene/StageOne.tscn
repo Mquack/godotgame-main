@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scene/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://script/StageOne.gd" type="Script" id=2]
 [ext_resource path="res://scene/skeleton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://texture/Background/BG_paralax_trees.png" type="Texture" id=4]
 [ext_resource path="res://scene/bounceshroom2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scene/folding_leaf.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scene/bounceshroom.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scene/c_carrot.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scene/fox.tscn" type="PackedScene" id=14]
@@ -13,17 +14,20 @@
 [node name="StageOne" type="Node2D"]
 script = ExtResource( 2 )
 
+[node name="folding_leaf" parent="." instance=ExtResource( 6 )]
+position = Vector2( 621.938, 195.21 )
+
 [node name="player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 131.925, 237.14 )
 z_index = 1
 
 [node name="skeleton1" parent="." instance=ExtResource( 3 )]
-position = Vector2( 741.309, 227.466 )
+position = Vector2( 1107.31, 173.466 )
 z_index = 1
 collision_mask = 14
 
 [node name="fox" parent="." instance=ExtResource( 14 )]
-position = Vector2( 964.389, 240.959 )
+position = Vector2( 925.812, 242.686 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_base_scale = Vector2( 0.5, 1 )
@@ -51,3 +55,6 @@ position = Vector2( 260.524, 205.572 )
 
 [node name="bounceshroom2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 404.249, 146.839 )
+
+[node name="fox2" parent="." instance=ExtResource( 14 )]
+position = Vector2( 807, 242 )

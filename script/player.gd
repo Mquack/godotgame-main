@@ -333,7 +333,8 @@ func player_hit(hit:int = 1):
 		hp -= hit
 		on_health_updated(hp)
 		is_hurt = true
-		$AnimatedSprite.play("hurt")
+		if !is_attacking:
+			$AnimatedSprite.play("hurt")
 
 
 func _on_Area2D_feet_body_entered(body):

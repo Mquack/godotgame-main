@@ -25,6 +25,7 @@ var follow_direction = Vector2()
 var distance
 var follow_distance = 150
 var stunned = false
+var knocked_back = false
 
 var hp = 10
 const max_health = 10
@@ -33,13 +34,22 @@ onready var health_bar = $HealthBar/HealthBar
 onready var health_under = $HealthBar/HealthBar_under
 onready var update_health = $HealthBar/UpdateHealth
 
-func _ready():
-	pass#$AnimatedSprite_health.play("hp_array[3]")
+var knockback_timer
 
+
+
+func _ready():
+	#pass
+	#$AnimatedSprite_health.play("hp_array[3]")
+	knockback_timer = Timer.new()
+	knockback_timer.set_one_shot(true)
+	knockback_timer.set_wait_time(0.75)
+	knockback_timer.connect("timeout", self, "_on_knockback_timer_timeout")
+	add_child(knockback_timer)
 
 func _physics_process(delta):
 	if !follow_target_state():
-		if !is_dead:# and !is_attacking:
+		if !is_dead:
 			if $RayCast2D.is_colliding():
 				velocity.x = SPEED * direction
 				
@@ -57,10 +67,12 @@ func _physics_process(delta):
 		#check if there is gound underneath
 		if $RayCast2D.is_colliding() == false:
 			direction *= -1
-			
+		
+	elif knocked_back:
+		velocity = move_and_slide(velocity, FLOOR)
 	else:
 		follow_target()
-	
+		
 	flip_char()
 
 
@@ -225,6 +237,7 @@ func on_health_updated(hp):
 func dead(hitpoints):
 	#$HealthBar/HP_display.set_text(str(hitpoints * -1))
 	#$HealthBar/HP_display.visible = true
+	print("hurt by hitpoints, ", hitpoints)
 	if hp <= hitpoints:
 		is_dead = true
 		velocity = Vector2(0, 0)
@@ -248,8 +261,21 @@ func dead(hitpoints):
 
 
 func knockback():
-	var pos = self.global_position.x - get_parent().get_node("player").global_position.x
-	if pos > 0:
-		self.global_position.x += 20
-	else:
-		self.global_position.x -= 20
+	if !knocked_back:
+		knocked_back = true
+		#direction *= -1
+		velocity.x = SPEED * (direction * -1)
+		knockback_timer.start()
+		#velocity.y += GRAVITY
+	#velocity = move_and_slide(velocity, FLOOR)
+	
+	
+#	var pos = self.global_position.x - get_parent().get_node("player").global_position.x
+#	if pos > 0:
+#		self.global_position.x += 20
+#	else:
+#		self.global_position.x -= 20
+
+
+func _on_knockback_timer_timeout():
+	knocked_back = false

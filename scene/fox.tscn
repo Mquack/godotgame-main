@@ -68,15 +68,30 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 35 ), ExtResource( 34 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 36 ) ],
-"loop": false,
-"name": "death",
+"frames": [ ExtResource( 13 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "walk",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "hurt",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 35 ), ExtResource( 34 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 36 ) ],
+"loop": false,
+"name": "death",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 27 ), ExtResource( 17 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "attack_run",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "attack0",
+"speed": 20.0
 }, {
 "frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 5 ) ],
 "loop": true,
@@ -87,21 +102,6 @@ animations = [ {
 "loop": true,
 "name": "attack2",
 "speed": 20.0
-}, {
-"frames": [ ExtResource( 22 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ) ],
-"loop": true,
-"name": "attack0",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 16 ), ExtResource( 27 ), ExtResource( 17 ), ExtResource( 28 ) ],
-"loop": true,
-"name": "attack_run",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 13 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "walk",
-"speed": 5.0
 } ]
 
 [sub_resource type="SpriteFrames" id=8]
@@ -111,14 +111,14 @@ animations = [ {
 "name": "attack_run_feet",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "idle_feet",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 8 ), ExtResource( 15 ), ExtResource( 10 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "walk_feet",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "idle_feet",
 "speed": 5.0
 } ]
 
@@ -126,7 +126,7 @@ animations = [ {
 radius = 8.50368
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 6.1374, 6.53289 )
+extents = Vector2( 2.98491, 6.53289 )
 
 [node name="fox" type="KinematicBody2D"]
 collision_layer = 16
@@ -150,10 +150,10 @@ animation = "attack1"
 frame = 2
 
 [node name="AniSpr_feet" type="AnimatedSprite" parent="."]
-visible = false
 position = Vector2( 0, -14 )
 frames = SubResource( 8 )
-animation = "idle_feet"
+animation = "attack_run_feet"
+frame = 3
 
 [node name="RayCast_sword0" type="RayCast2D" parent="."]
 enabled = true

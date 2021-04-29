@@ -33,17 +33,16 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 
 func _on_carrot_body_entered(body):
-	print(body.name)
 	crash = true
-	$AnimatedSprite.play("new_smush")
-	#if "skeleton" in body.name:
-	#body.dead()
-		
-func _on_aimed_carrot_area_entered(area):
-	print(area.name)
-	crash = true
+	#$CollisionShape2D.set_disabled(true)
 	$AnimatedSprite.play("new_smush")
 
+
+func _on_aimed_carrot_area_entered(area):
+	#correct way to disable collisions, others may result in crash :(
+	$CollisionShape2D.set_deferred("disabled",true)
+	crash = true
+	$AnimatedSprite.play("new_smush")
 
 
 func _on_AnimatedSprite_animation_finished():
