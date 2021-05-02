@@ -43,6 +43,7 @@ collision_mask = 4
 script = ExtResource( 2 )
 
 [node name="bounce" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2( 0, 16 )
 z_index = 1
 polygon = PoolVector2Array( -24, -52, 16, -52, 32, -36, -4, -40, -32, -32, -44, -32 )
@@ -52,6 +53,7 @@ collision_layer = 10
 collision_mask = 14
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
 polygon = PoolVector2Array( -44, -16, -24, -36, 16, -36, 32, -20, -4, -24, -32, -16 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

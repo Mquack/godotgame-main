@@ -194,14 +194,14 @@ func move_char():
 				#if !is_attacking:
 				velocity.y = jump_power
 				$AnimatedSprite.play("jump")
-				$AnSpfeet_back.play("jump")
-				$AnSpfeet_front.play("jump")
+#				$AnSpfeet_back.play("jump")
+#				$AnSpfeet_front.play("jump")
 				dubble_jump = false
 			elif !dubble_jump and !wall_jumped:
 				velocity.y = jump_power
 				$AnimatedSprite.play("jump")
-				$AnSpfeet_back.play("jump")
-				$AnSpfeet_front.play("jump")
+#				$AnSpfeet_back.play("jump")
+#				$AnSpfeet_front.play("jump")
 				dubble_jump = true
 			
 		if !is_on_floor():
@@ -301,7 +301,10 @@ func can_move_after_wall_jump():
 			wall_jumped = false
 			return true
 		else:
-			return false
+			if is_on_floor():
+				return true
+			else:
+				return false
 	else:
 		return true
 
@@ -343,8 +346,8 @@ func _on_Area2D_feet_body_entered(body):
 				velocity.y = jump_power * 1.5
 				dubble_jump = false
 				$AnimatedSprite.play("jump")
-				$AnSpfeet_back.play("jump")
-				$AnSpfeet_front.play("jump")
+#				$AnSpfeet_back.play("jump")
+#				$AnSpfeet_front.play("jump")
 				
 
 
