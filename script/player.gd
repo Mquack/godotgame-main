@@ -346,3 +346,4 @@ func player_knockback(enemy):
 
 func _on_wall_jump_timer_timeout():
 	wall_jump_complete = true
+	wall_jumped = false
