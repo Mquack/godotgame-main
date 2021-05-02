@@ -24,7 +24,7 @@ var carrot_ammo = 50
 
 var is_hurt = false
 var wall_jumped = false
-var wall_jump_pos
+var wall_jump_complete = true
 
 var looking_dir = 1
 
@@ -70,14 +70,6 @@ func flip_him():
 		looking_dir = -1
 		if $AnimatedSprite.flip_h:
 			$RayCast_melee.cast_to.x = -1 * abs($RayCast_melee.cast_to.x)
-		
-#	if velocity.x != 0:
-#		if looking_dir != velocity.x/abs(velocity.x):
-#			speed = back_speed
-#		else:
-#			speed = walk_speed
-#		if is_attacking:
-#			speed = back_speed
 
 
 func turn_melee_ray():
@@ -152,13 +144,10 @@ func move_char():
 	if !is_dead:# and !is_hurt:
 		#flip_him()
 		var pos_holder = ($AnimatedSprite.get_local_mouse_position() - $Position2D_aim.position).normalized()
-#		if Input.is_action_pressed("shift_pressed"):
-#			speed = run_speed
-#		else:
-#			speed = walk_speed
+		
 			
 		if Input.is_action_pressed("ui_right"):
-			if can_move_after_wall_jump():
+			if wall_jump_complete:
 				velocity.x = speed
 			if !is_attacking:
 				$AnimatedSprite.flip_h = false
@@ -168,7 +157,7 @@ func move_char():
 					$AnSpfeet_front.play("walk")
 					
 		elif Input.is_action_pressed("ui_left"):
-			if can_move_after_wall_jump():
+			if wall_jump_complete:
 				velocity.x = speed * -1
 			if !is_attacking:
 				$AnimatedSprite.flip_h = true
@@ -191,7 +180,6 @@ func move_char():
 		if Input.is_action_just_pressed("ui_select"):
 			wall_jump()
 			if is_on_floor():
-				#if !is_attacking:
 				velocity.y = jump_power
 				$AnimatedSprite.play("jump")
 #				$AnSpfeet_back.play("jump")
@@ -292,21 +280,11 @@ func wall_jump():
 					velocity.x = speed * -1
 				dubble_jump = false
 				wall_jumped = true
-				wall_jump_pos = self.global_position.x
+				wall_jump_complete = false
+				$wall_jump_timer.start(0.6)
 
 
-func can_move_after_wall_jump():
-	if wall_jumped:
-		if abs(self.global_position.x - wall_jump_pos) > 100:
-			wall_jumped = false
-			return true
-		else:
-			if is_on_floor():
-				return true
-			else:
-				return false
-	else:
-		return true
+
 
 
 func update_hud():
@@ -364,3 +342,7 @@ func player_knockback(enemy):
 	else:
 		self.global_position.x -= 20
 
+
+
+func _on_wall_jump_timer_timeout():
+	wall_jump_complete = true
